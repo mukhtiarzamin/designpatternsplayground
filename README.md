@@ -1,4 +1,6 @@
-# designpatternsplayground
+# Design Patterns Playground
+
+## Introduction
 
 We use this repository in the subject of Design pattern, which assumes that you are knowing utilizing the data structure, object oriented and sofotware engineering basic principles knowledge.
 
