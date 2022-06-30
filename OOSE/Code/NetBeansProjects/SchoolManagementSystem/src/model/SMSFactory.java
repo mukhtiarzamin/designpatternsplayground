@@ -6,7 +6,9 @@
 package model;
 
 import dal.DALManager;
+import dal.RecordsAdder;
 import dal.RecordsMapper;
+import model.dto.Response;
 
 /**
  *
@@ -20,6 +22,14 @@ public class SMSFactory {
 
     public static SMSController getInstanceOfSMSController() {
         return new SMSController();
+    }
+
+    static Response getResponseInstance() {
+        return new Response();
+    }
+
+    public static RecordsAdder getInstanceOfAdder() {
+        return new RecordsAdder();
     }
     
 }

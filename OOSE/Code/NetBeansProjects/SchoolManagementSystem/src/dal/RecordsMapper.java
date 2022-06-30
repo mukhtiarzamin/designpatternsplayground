@@ -16,13 +16,14 @@ import model.dto.EmployeeDTO;
 public class RecordsMapper {
 
     ArrayList<EmployeeDTO> getEmployees(ResultSet rs) {
-        ArrayList<EmployeeDTO> emplist = new ArrayList<EmployeeDTO>();
+        ArrayList<EmployeeDTO> emplist = new ArrayList<>();
         try{
         while (rs.next())
             {
                 EmployeeDTO objEmp=new EmployeeDTO();                
                 objEmp.Id=rs.getString(1);
-                objEmp.Name=rs.getString(3) + " "+rs.getString(2);
+                objEmp.FirstName= rs.getString(3);
+                objEmp.LastName =rs.getString(2);
                 objEmp.Address=rs.getString(8);                  
                 emplist.add(objEmp);
             }

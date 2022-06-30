@@ -8,7 +8,11 @@ package dal;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import model.SMSFactory;
 import model.dto.EmployeeDTO;
+import model.dto.Message;
+import model.dto.MessageType;
+import model.dto.Response;
 
 /**
  *
@@ -18,18 +22,34 @@ public class DALManager {
     IConnection objConnection;
     DBReader objReader;
     RecordsMapper objMapper;
+    RecordsAdder objAdder;
 
     public DALManager(RecordsMapper mapper){
-    objConnection = new SQLConnection("MUKHTIAR-PC","northwindd", "sa","7intin");
+    objConnection = new SQLConnection("MUKHTIAR-WPC\\SQLEXPRESS","Northwind", "sa","7intin");
     objReader = new DBReader();
+    objAdder = SMSFactory.getInstanceOfAdder();
     this.objMapper=mapper;
     }
-    public ArrayList<EmployeeDTO> getEmployeesList() {
+    public ArrayList<EmployeeDTO> getEmployeesList(String searchKey) {
                 
         Connection  dbConnection = objConnection.getConnection();
-        ResultSet rs = objReader.getRecords("Select * from Employees", dbConnection);
-        return objMapper.getEmployees(rs);
-        
+        String viewEmployeesQuery = "Select * from Employees";
+        if(searchKey == null || searchKey.length() > 0)
+        {
+            viewEmployeesQuery += " where FirstName LIKE '%"+searchKey+"%' OR LastName LIKE '%"+searchKey+"%' OR Title LIKE '%"+searchKey+"%';";
+        }
+        ResultSet rs = objReader.getRecords(viewEmployeesQuery, dbConnection);
+        return objMapper.getEmployees(rs);        
     }  
+
+    public void saveEmployee(EmployeeDTO objEmp, Response objResponse) {
+        try{
+            Connection  dbConnection = objConnection.getConnection();
+            objAdder.saveEmployee(objEmp,objResponse,dbConnection);            
+        }catch(Exception e){
+        objResponse.messagesList.add(new Message("Ooops! Failed to create employee, Please contact support that there an issue while saving new employee.", MessageType.Error));
+        objResponse.messagesList.add(new Message(e.getMessage() + "\n Stack Track:\n"+e.getStackTrace(), MessageType.Exception));
+        }
+    }
     
 }

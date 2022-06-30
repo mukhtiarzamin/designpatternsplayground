@@ -12,7 +12,9 @@ package model.dto;
 public class EmployeeDTO {
 
     public String Id;
-    public String Name;
+    public String FirstName;
+    public String LastName;
+    public String Title;
     public String Address;
     
 }
