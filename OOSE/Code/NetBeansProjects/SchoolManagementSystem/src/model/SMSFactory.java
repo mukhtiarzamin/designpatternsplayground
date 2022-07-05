@@ -8,6 +8,7 @@ package model;
 import dal.DALManager;
 import dal.RecordsAdder;
 import dal.RecordsMapper;
+import dal.RecordsModifier;
 import model.dto.Response;
 
 /**
@@ -30,6 +31,10 @@ public class SMSFactory {
 
     public static RecordsAdder getInstanceOfAdder() {
         return new RecordsAdder();
+    }
+
+    public static RecordsModifier getInstanceOfModifier() {
+        return new RecordsModifier();
     }
     
 }

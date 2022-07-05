@@ -23,12 +23,14 @@ public class DALManager {
     DBReader objReader;
     RecordsMapper objMapper;
     RecordsAdder objAdder;
+    RecordsModifier objModifier;
 
     public DALManager(RecordsMapper mapper){
     objConnection = new SQLConnection("MUKHTIAR-WPC\\SQLEXPRESS","Northwind", "sa","7intin");
     objReader = new DBReader();
     objAdder = SMSFactory.getInstanceOfAdder();
     this.objMapper=mapper;
+    objModifier = SMSFactory.getInstanceOfModifier();
     }
     public ArrayList<EmployeeDTO> getEmployeesList(String searchKey) {
                 
@@ -48,6 +50,16 @@ public class DALManager {
             objAdder.saveEmployee(objEmp,objResponse,dbConnection);            
         }catch(Exception e){
         objResponse.messagesList.add(new Message("Ooops! Failed to create employee, Please contact support that there an issue while saving new employee.", MessageType.Error));
+        objResponse.messagesList.add(new Message(e.getMessage() + "\n Stack Track:\n"+e.getStackTrace(), MessageType.Exception));
+        }
+    }
+
+    public Response deleteEmployee(String selectedId, Response objResponse) {
+        try{
+            Connection  dbConnection = objConnection.getConnection();
+            return objModifier.deleteEmployee(selectedId,objResponse,dbConnection);            
+        }catch(Exception e){
+        objResponse.messagesList.add(new Message("Ooops! Failed to delete employee, Please contact support that there an issue while saving new employee.", MessageType.Error));
         objResponse.messagesList.add(new Message(e.getMessage() + "\n Stack Track:\n"+e.getStackTrace(), MessageType.Exception));
         }
     }

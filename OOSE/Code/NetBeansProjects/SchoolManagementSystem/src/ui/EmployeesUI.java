@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.SMSController;
 import model.SMSFactory;
+import model.dto.Response;
 
 /**
  *
@@ -218,6 +219,7 @@ SMSController objController;
         if(selectedId != null){
          JOptionPane.showMessageDialog(this, "Deleting record with "+ selectedId);
         }
+        Response objResponse=  objController.deleteEmployee(selectedId);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

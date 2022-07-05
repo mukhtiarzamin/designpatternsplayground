@@ -33,4 +33,10 @@ public class SMSController {
         }
         return objResponse;
     }
+
+    public Response deleteEmployee(String selectedId) {
+        Response objResponse = SMSFactory.getResponseInstance();
+        objDAL.deleteEmployee(selectedId, objResponse);
+        return objResponse;
+    }
 }
