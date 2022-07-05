@@ -4,6 +4,7 @@
  */
 package ui;
 
+import java.awt.Color;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -19,6 +20,7 @@ public class CommonHandler {
         if(objResponse.hasError()){
             if(uiComponent instanceof JLabel){
                 ((JLabel)uiComponent).setText(objResponse.getErrorMessages());
+                ((JLabel)uiComponent).setForeground(Color.RED);
             }
         }
     }
