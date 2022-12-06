@@ -15,9 +15,9 @@ import model.validators.CommonValidator;
  *
  * @author Mukhtiar
  */
-public class SMSController {
+public class OSSController {
     DALManager objDAL;
-    public SMSController(){
+    public OSSController(){
     objDAL = SMSFactory.getInstanceOfDALManager();
     }
 

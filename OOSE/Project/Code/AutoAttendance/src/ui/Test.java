@@ -4,18 +4,10 @@
  */
 package ui;
 
-import javax.swing.JFrame;
-import ui.Dashboard;
-
 /**
  *
  * @author Mukhtiar-HPC
  */
-public class UIHelper {
-
-    static void backToDashboard(Dashboard objDashboard, JFrame currentForm) {
-        objDashboard.setVisible(true);
-        currentForm.dispose();
-    }
+public class Test {
     
 }

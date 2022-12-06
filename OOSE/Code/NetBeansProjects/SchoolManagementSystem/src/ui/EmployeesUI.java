@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.SMSController;
+import model.OSSController;
 import model.SMSFactory;
 import model.dto.Response;
 
@@ -21,7 +21,7 @@ import model.dto.Response;
 public class EmployeesUI extends javax.swing.JFrame {
 
 Dashboard objMainUI;
-SMSController objController;
+OSSController objController;
     EmployeesUI(Dashboard aThis) {
         initComponents();
         objMainUI = aThis;
