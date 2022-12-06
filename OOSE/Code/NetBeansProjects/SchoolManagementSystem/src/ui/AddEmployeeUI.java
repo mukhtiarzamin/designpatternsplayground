@@ -184,7 +184,7 @@ public class AddEmployeeUI extends javax.swing.JFrame {
         // 3. Add to DB
         try{
             // 3.1 Set Connection
-            Connection  dbConnection = DriverManager.getConnection("jdbc:sqlserver://;databaseName=Northwind;trustServerCertificate=true;", "sa","7intin");
+            Connection  dbConnection = DriverManager.getConnection("jdbc:sqlserver://;databaseName=Northwind;trustServerCertificate=true;", "replaceMe","replaceMe");
             // 3.2 Add record in Employee table
             PreparedStatement p = dbConnection.prepareStatement("INSERT INTO EMployees (FirstName,LastName,Title) VALUES (?,?,?);");
             p.setString(1, lastName);
