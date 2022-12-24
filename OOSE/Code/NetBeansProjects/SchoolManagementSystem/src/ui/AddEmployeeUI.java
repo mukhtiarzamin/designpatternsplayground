@@ -48,7 +48,7 @@ public class AddEmployeeUI extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        button1 = new java.awt.Button();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("New Employee - Online Shopping System");
@@ -80,12 +80,10 @@ public class AddEmployeeUI extends javax.swing.JFrame {
             }
         });
 
-        button1.setActionCommand("");
-        button1.setBackground(new java.awt.Color(255, 255, 255));
-        button1.setLabel("Bad Save");
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setText("Bad Save");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -99,29 +97,26 @@ public class AddEmployeeUI extends javax.swing.JFrame {
                         .addGap(161, 161, 161)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4))
-                                .addGap(31, 31, 31))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jButton1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                                    .addComponent(jButton2))
-                                .addComponent(jTextField1)
-                                .addComponent(jTextField2)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(104, Short.MAX_VALUE))
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton3)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jButton1)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                                            .addComponent(jButton2))
+                                        .addComponent(jTextField1)
+                                        .addComponent(jTextField2)
+                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jLabel5))))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,14 +136,14 @@ public class AddEmployeeUI extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
-                        .addComponent(jButton2))
-                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
@@ -168,8 +163,12 @@ public class AddEmployeeUI extends javax.swing.JFrame {
         CommonHandler.handleResponse(objResponse,jLabel5);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        // 1. Read inputs
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        BadSaveExample();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void BadSaveExample(){
+    // 1. Read inputs
         String firstName = jTextField1.getText();
         String lastName = jTextField2.getText();
         String title = jComboBox1.getSelectedItem().toString();
@@ -184,7 +183,7 @@ public class AddEmployeeUI extends javax.swing.JFrame {
         // 3. Add to DB
         try{
             // 3.1 Set Connection
-            Connection  dbConnection = DriverManager.getConnection("jdbc:sqlserver://;databaseName=Northwind;trustServerCertificate=true;", "replaceMe","replaceMe");
+            Connection  dbConnection = DriverManager.getConnection("jdbc:sqlserver://;databaseName=Northwind;trustServerCertificate=true;", "sa","7intin");
             // 3.2 Add record in Employee table
             PreparedStatement p = dbConnection.prepareStatement("INSERT INTO EMployees (FirstName,LastName,Title) VALUES (?,?,?);");
             p.setString(1, lastName);
@@ -198,15 +197,14 @@ public class AddEmployeeUI extends javax.swing.JFrame {
         }catch(SQLException e){
            jLabel5.setText("Ooops! Failed to create employee, Please contact support that there an issue while saving new employee.");
            jLabel5.setForeground(Color.red);
-        }        
-    }//GEN-LAST:event_button1ActionPerformed
-
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button button1;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

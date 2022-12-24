@@ -16,10 +16,19 @@ import model.dto.Response;
 public class CommonValidator {
 
     public static void validateEmployee(EmployeeDTO objEmp, Response objResponse) {
-        if(objEmp.FirstName == null || objEmp.FirstName.length() < 3){
+        isValidName(objEmp.FirstName, objResponse);
+        isValidName(objEmp.LastName, objResponse);
+        
+    }
+
+    private static void isValidName(String nameToValidate, Response objResponse) {
+        if(nameToValidate == null || nameToValidate.length() < 3){
             objResponse.messagesList.add(new Message("FIrst Name is not valid, Provide valid first name with at least 3 characters.",MessageType.Error));
         }
+        
         // Todo validate the rest
     }
+    
+    
     
 }

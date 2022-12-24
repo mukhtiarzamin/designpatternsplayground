@@ -262,7 +262,7 @@ OSSController objController;
     private String getSelectedEmployeeId() {
         if(jTable1.getSelectedRow() > 0)
         {
-        return jTable1.getValueAt(jTable1.getSelectedRow(),jTable1.getSelectedColumn()).toString();
+        return jTable1.getValueAt(jTable1.getSelectedRow(),0).toString();
         }
         else {
         JOptionPane.showMessageDialog(this, "Select a record and then try again.");

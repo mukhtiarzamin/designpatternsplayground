@@ -26,7 +26,7 @@ public class DALManager {
     RecordsModifier objModifier;
 
     public DALManager(RecordsMapper mapper){
-    objConnection = new SQLConnection("//","Northwind", "replaceMe","replaceMe");
+    objConnection = new SQLConnection("MUKHTIAR-WPC\\SQLEXPRESS","Northwind", "sa","7intin");
     objReader = new DBReader();
     objAdder = SMSFactory.getInstanceOfAdder();
     this.objMapper=mapper;
