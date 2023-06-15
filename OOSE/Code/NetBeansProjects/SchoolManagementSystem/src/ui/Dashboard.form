@@ -61,6 +61,18 @@
               <Component id="label1" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="399" max="32767" attributes="0"/>
           </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="button1" min="-2" pref="112" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Component id="button2" min="-2" pref="104" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="label2" min="-2" pref="280" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -68,7 +80,14 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="label1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="249" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="button2" pref="36" max="32767" attributes="0"/>
+                  <Component id="button1" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Component id="label2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="82" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -81,6 +100,27 @@
         </Property>
         <Property name="text" type="java.lang.String" value="HMS"/>
       </Properties>
+    </Component>
+    <Component class="java.awt.Button" name="button1">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Run Clock"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.Label" name="label2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="label2"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Button" name="button2">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Stop"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

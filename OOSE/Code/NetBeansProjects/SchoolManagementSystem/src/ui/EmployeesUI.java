@@ -20,13 +20,17 @@ import model.dto.Response;
  */
 public class EmployeesUI extends javax.swing.JFrame {
 
-Dashboard objMainUI;
+javax.swing.JFrame objMainUI;
 OSSController objController;
-    EmployeesUI(Dashboard aThis) {
+    EmployeesUI(javax.swing.JFrame aThis) {
         initComponents();
         objMainUI = aThis;
         objController = SMSFactory.getInstanceOfSMSController();
         loadData();
+    }
+    @Override
+    public void dispose() {
+        
     }
     
     DefaultTableModel dtm;    
@@ -227,6 +231,7 @@ OSSController objController;
          JOptionPane.showMessageDialog(this, "Deleting record with "+ selectedId);
          Response objResponse =  objController.deleteEmployee(selectedId);
          CommonHandler.handleResponse(objResponse, jLabel1);
+         loadData(); 
         }
         
     }//GEN-LAST:event_jButton4ActionPerformed

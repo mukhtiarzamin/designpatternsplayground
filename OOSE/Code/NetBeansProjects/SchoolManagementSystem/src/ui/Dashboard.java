@@ -5,6 +5,11 @@
  */
 package ui;
 
+import java.util.Date;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 /**
  *
  * @author Mukhtiar
@@ -28,6 +33,9 @@ public class Dashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         label1 = new java.awt.Label();
+        button1 = new java.awt.Button();
+        label2 = new java.awt.Label();
+        button2 = new java.awt.Button();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -39,6 +47,22 @@ public class Dashboard extends javax.swing.JFrame {
 
         label1.setFont(new java.awt.Font("Dialog", 0, 48)); // NOI18N
         label1.setText("HMS");
+
+        button1.setLabel("Run Clock");
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
+
+        label2.setText("label2");
+
+        button2.setLabel("Stop");
+        button2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button2ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -68,13 +92,28 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(169, 169, 169)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(399, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
+                        .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addGap(91, 91, 91)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(button2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         pack();
@@ -85,6 +124,42 @@ public class Dashboard extends javax.swing.JFrame {
         EmployeesUI objEmpUI = new EmployeesUI(this);
         objEmpUI.setVisible(true);
     }//GEN-LAST:event_jMenu3MouseClicked
+ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        // TODO add your handling code here:
+        
+        if(executor == null)
+        {
+        executor = Executors.newSingleThreadScheduledExecutor();
+        }
+        
+        Runnable task = new Runnable() {
+        @Override
+        public void run() {
+            // Your periodic task code here
+            label2.setText("Now: "+new Date().toString());
+                System.out.println("Task executed after delay " + new Date().toString());
+                //executor.schedule(this, 2, TimeUnit.SECONDS);
+        }
+    };
+        
+        executor.scheduleAtFixedRate(task, 2, 2, TimeUnit.SECONDS);
+        //executor.schedule(task, 2, TimeUnit.SECONDS); // Schedule the task to run after 5 seconds
+       // executor.scheduleAtFixedRate(task, 2, 2, TimeUnit.SECONDS);
+        //executor.scheduleWithFixedDelay(task, 3, 3, TimeUnit.DAYS);
+        
+        // Other code can continue running without being blocked
+        System.out.println("Other code running");
+        
+        //executor.shutdown(); // Don't forget to shut down the executor when done
+        
+    }//GEN-LAST:event_button1ActionPerformed
+
+    private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
+        // TODO add your handling code here:
+        executor.shutdown(); // Don't forget to shut down the executor when done
+        executor = null;        
+    }//GEN-LAST:event_button2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,11 +197,14 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button button1;
+    private java.awt.Button button2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private java.awt.Label label1;
+    private java.awt.Label label2;
     // End of variables declaration//GEN-END:variables
 }
