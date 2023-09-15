@@ -1,0 +1,12 @@
+Creator Principle: Creator principle guides you to decide on who will create object X.
+
+Problem: Living things are dependent on water. Create a water supply system for Human, Animal and Tree such that
+ CleanWater supply to Human, A litter dirty water to animal and muddy water to the tree only. In your first implementation
+ CleanWater don't have any lab test but then due to pandemic only a lab tested water should be supplied to human.
+
+ Without Principle: We created SupplySystem class that creates objects of Human, Animal and Tree with dependency on Water.
+ In the first implementation simply transparent water provided to Human but after Pandemic a transparent and lab tested water
+ must be provided to human object.
+
+ With Principle: We also created LivingFactory to implement creator principle and then after pandemic the maintenance
+ was easy.
