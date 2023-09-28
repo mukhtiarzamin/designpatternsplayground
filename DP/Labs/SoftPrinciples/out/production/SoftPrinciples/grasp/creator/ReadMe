@@ -1,5 +1,4 @@
-Creator Principle
-Creator principle guides you to decide on who will create object X.
+Creator Principle: Creator principle guides you to decide on who will create object X.
 
 Problem: Living things are dependent on water. Create a water supply system for Human, Animal and Tree such that
  CleanWater supply to Human, A litter dirty water to animal and muddy water to the tree only. In your first implementation
