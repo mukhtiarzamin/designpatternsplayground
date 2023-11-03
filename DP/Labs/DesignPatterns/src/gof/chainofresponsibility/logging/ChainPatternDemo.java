@@ -1,5 +1,10 @@
 package gof.chainofresponsibility.logging;
 
+/*
+* Basic version was taken from
+* https://www.tutorialspoint.com/design_pattern/chain_of_responsibility_pattern.htm
+*
+* */
 public class ChainPatternDemo {
     private static AbstractLogger getChainOfLoggers(){
 
