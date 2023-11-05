@@ -1,4 +1,4 @@
-package gof.strategy.tp_calculator;
+package gof.strategy.tp_calculator.labwork;
 
 public class Demo {
 
