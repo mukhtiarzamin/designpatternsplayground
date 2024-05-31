@@ -2,6 +2,6 @@ package com.example.tdd;
 
 import java.util.List;
 
-public interface BookRepository {
+public interface IBookRepository {
     List<Book> findAllBooks();
 }

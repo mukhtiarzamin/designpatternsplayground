@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BookService {
-    private BookRepository bookRepository;
+    private IBookRepository bookRepository;
 
-    public BookService(BookRepository bookRepository) {
+    public BookService(IBookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 

@@ -3,7 +3,7 @@ package com.example.tdd;
 import java.util.Arrays;
 import java.util.List;
 
-public class BookRepositoryStub implements BookRepository {
+public class BookRepository implements IBookRepository {
 
     @Override
     public List<Book> findAllBooks() {

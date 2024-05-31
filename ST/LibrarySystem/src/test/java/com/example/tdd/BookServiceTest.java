@@ -12,12 +12,14 @@ public class BookServiceTest {
 
     @BeforeEach
     public void setUp() {
-        BookRepository bookRepository = new BookRepositoryStub();
+        //IBookRepository bookRepository = new BookRepository();
+        IBookRepository bookRepository = new FakeRepositoryForTest();
         bookService = new BookService(bookRepository);
     }
 
     @Test
     public void testGetBooksByAuthor() {
+        FakeRepositoryForTest.booksList = null;
         List<Book> books = bookService.getBooksByAuthor("Kent Beck");
         Assertions.assertEquals(1, books.size());
         Assertions.assertEquals("Test Driven Development", books.get(0).getTitle());
